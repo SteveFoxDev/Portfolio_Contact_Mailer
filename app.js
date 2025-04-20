@@ -11,7 +11,7 @@ const app = express();
 //Cross origin setup
 const URL = process.env.CORS_ORIGIN || 'http://localhost:5173';
 app.use(cors({
-    origin: URL
+    origin: '*'
 }));
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
