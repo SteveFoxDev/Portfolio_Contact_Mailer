@@ -16,7 +16,8 @@ app.use(express.json()); // Parse incoming JSON body data
 // app.use(cors({
 //     origin: URL
 // }));
-app.use(cors());
+// app.use(cors());
+app.options('*', cors());
 
 //Mailer config
 const transporter = nodemailer.createTransport({
