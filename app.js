@@ -8,15 +8,15 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true })); // Parse Body Data
+app.use(express.json()); // Parse incoming JSON body data
+
 //Cross origin setup
-const URL = process.env.CORS_ORIGIN || 'http://localhost:5173';
+// const URL = process.env.CORS_ORIGIN || 'http://localhost:5173';
 // app.use(cors({
 //     origin: URL
 // }));
 app.use(cors());
-
-app.use(express.urlencoded({ extended: true })); // Parse Body Data
-app.use(express.json()); // Parse incoming JSON body data
 
 //Mailer config
 const transporter = nodemailer.createTransport({
