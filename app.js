@@ -7,18 +7,16 @@ const nodemailer = require('nodemailer');
 // const cors = require('cors');
 
 const app = express();
-
-// const corsOptions = {
-//     origin: 'https://www.stevefox.dev',
-//     // allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
-//     // credentials: true,
-//     // enablePreflight: true
-// }
-
-// app.use(cors(corsOptions));
-// app.options('*', cors());
+const corsOptions = {
+    origin: 'https://www.stevefox.dev',
+    methods: 'POST',
+    allowedHeaders: 'Content-type, Authorization',
+    credentials: true,
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'https://www.stevefox.dev');
     next();
 });
 
