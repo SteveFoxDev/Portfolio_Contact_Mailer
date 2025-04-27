@@ -32,7 +32,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-app.post('/send-email', cors(), async (req, res, next) => {
+app.post('/send-email', async (req, res, next) => {
     const { fullname, email, newMessage } = req.body;
     const message = {fullname, email, newMessage}
     
