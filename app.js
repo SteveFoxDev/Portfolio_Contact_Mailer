@@ -16,8 +16,14 @@ const app = express();
 // }
 
 // app.use(cors(corsOptions));
-app.options('*', cors());
-app.use(cors());
+// app.options('*', cors());
+app.options('/your/endpoint', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.stevefox.dev'); // Replace with your allowed origin
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).end();
+  });
+// app.use(cors());
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
 app.use(express.json()); // Parse incoming JSON body data
