@@ -17,7 +17,7 @@ const app = express();
 
 // app.use(cors(corsOptions));
 // app.options('*', cors());
-app.options('/your/endpoint', (req, res) => {
+app.options('/send-email', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://www.stevefox.dev'); // Replace with your allowed origin
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
