@@ -9,13 +9,13 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
-    origin: ['https://www.stevefox.dev'],
-    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
-    credentials: true,
-    enablePreflight: true
+    origin: 'https://www.stevefox.dev',
+    // allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
+    // credentials: true,
+    // enablePreflight: true
 }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.options('*', cors(corsOptions))
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
@@ -32,7 +32,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-app.post('/send-email', async (req, res, next) => {
+app.post('/send-email', cors(corsOptions), async (req, res, next) => {
     const { fullname, email, newMessage } = req.body;
     const message = {fullname, email, newMessage}
     
