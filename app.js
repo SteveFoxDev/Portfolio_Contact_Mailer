@@ -4,7 +4,7 @@ if(process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const nodemailer = require('nodemailer');
-// const cors = require('cors');
+const cors = require('cors');
 
 const app = express();
 const corsOptions = {
