@@ -40,7 +40,7 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/send-email', async (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Oigin', '*');
+    // res.setHeader('Access-Control-Allow-Oigin', '*');
     const { fullname, email, newMessage } = req.body;
     const message = {fullname, email, newMessage}
     
