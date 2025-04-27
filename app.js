@@ -13,9 +13,7 @@ app.use(express.json()); // Parse incoming JSON body data
 
 //Cross origin setup
 const URL = process.env.CORS_ORIGIN || 'http://localhost:5173';
-app.options('/send-email', cors({
-    origin: 'https://www.stevefox.dev'
-}));
+app.options('*', cors());
 
 //Mailer config
 const transporter = nodemailer.createTransport({
@@ -28,7 +26,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-app.post('/send-email', cors({origin: 'https://www.stevefox.dev'}), async (req, res, next) => {
+app.post('/send-email', cors(), async (req, res, next) => {
     const { fullname, email, newMessage } = req.body;
     const message = {fullname, email, newMessage}
     
