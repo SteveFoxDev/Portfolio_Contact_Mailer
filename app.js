@@ -8,17 +8,16 @@ const cors = require('cors');
 
 const app = express();
 const corsOptions = {
-    origin: 'https://www.stevefox.dev',
-    methods: 'POST',
-    allowedHeaders: 'Content-type, Authorization',
+    origin: ["https://www.stevefox.dev", "https://www.stevefox.dev/"],
     credentials: true,
 };
-app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://www.stevefox.dev');
-    next();
-});
+app.use(cors(corsOptions));
+
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'https://www.stevefox.dev');
+//     next();
+// });
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
 app.use(express.json()); // Parse incoming JSON body data
