@@ -3,16 +3,13 @@ if(process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 
 const app = express();
-const corsOptions = {
-    origin: ["https://www.stevefox.dev", "https://www.stevefox.dev/"],
-    credentials: true,
-};
-app.options('*', cors(corsOptions));
-app.use(cors(corsOptions));
+
+app.options('*', cors());
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
 app.use(express.json()); // Parse incoming JSON body data
@@ -29,7 +26,6 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/send-email', async (req, res, next) => {
-    // res.setHeader('Access-Control-Allow-Oigin', '*');
     const { fullname, email, newMessage } = req.body;
     const message = {fullname, email, newMessage}
     
