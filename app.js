@@ -8,7 +8,7 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
-app.options('*', cors());
+
 app.use(cors());
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
