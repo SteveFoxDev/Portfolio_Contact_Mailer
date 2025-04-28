@@ -14,11 +14,6 @@ const corsOptions = {
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', 'https://www.stevefox.dev');
-//     next();
-// });
-
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
 app.use(express.json()); // Parse incoming JSON body data
 
