@@ -8,8 +8,10 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
-
-app.use(cors());
+const URL = process.env.CORS_ORIGIN || 'http://localhost:5173';
+app.use(cors({
+    origin: URL,
+}));
 
 app.use(express.urlencoded({ extended: true })); // Parse Body Data
 app.use(express.json()); // Parse incoming JSON body data
